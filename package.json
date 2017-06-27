@@ -1,0 +1,29 @@
+{
+  "name": "selfbaroque",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mar0/SelfBaroque.git"
+  },
+  "author": "David Trinchi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mar0/SelfBaroque/issues"
+  },
+  "homepage": "https://github.com/Mar0/SelfBaroque#readme",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-preset-es2015": "^6.24.1",
+    "react": "^15.6.1",
+    "webpack": "^3.0.0"
+  },
+  "babel": {
+      "presets": ["es2015"]
+  }
+}
