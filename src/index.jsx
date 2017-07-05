@@ -12,3 +12,6 @@ const REDIRECT_URI = 'https://github.com/Mar0/SelfBaroque';
 //'http://www.flickr.com/services/feeds/photos_public.gne?format=json'
 
 fetchInstaData.getUserInfo(ACCESS_TOKEN)
+    .then(function (a) {
+        console.log(a.data.username)
+    })

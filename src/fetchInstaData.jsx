@@ -1,20 +1,23 @@
 import fetchJsonp from 'fetch-jsonp';
 
 export function callInstaFetch(uri) {
-    fetchJsonp(uri + '&callback=?', {})
-        .then(response => response.json())
-        .then(response => {console.log(response)})
+    return fetchJsonp(uri + '&callback=?', {})
+        .then(function(response) {
+            return response.json()
+        }).catch(function(ex) {
+            return 'parsing error' + ex
+        })
 }
 
 export function getUserInfo(ACCESS_TOKEN) {
-    this.callInstaFetch('https://api.instagram.com/v1/users/self/?access_token=' + ACCESS_TOKEN)
+    return this.callInstaFetch('https://api.instagram.com/v1/users/self/?access_token=' + ACCESS_TOKEN)
 }
 
 export function getUserMedia(ACCESS_TOKEN) {
-    this.callInstaFetch('https://api.instagram.com/v1/users/self/media/recent/?access_token=' + ACCESS_TOKEN)
+    return this.callInstaFetch('https://api.instagram.com/v1/users/self/media/recent/?access_token=' + ACCESS_TOKEN)
 }
 
 export function getMediaInfo(ACCESS_TOKEN, mediaId) {
-    this.callInstaFetch('https://api.instagram.com/v1/media/' + mediaId + '?access_token=' + ACCESS_TOKEN)
+    return this.callInstaFetch('https://api.instagram.com/v1/media/' + mediaId + '?access_token=' + ACCESS_TOKEN)
 }
 
