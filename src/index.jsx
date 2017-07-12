@@ -14,21 +14,23 @@ const REDIRECT_URI = 'https://github.com/Mar0/SelfBaroque'
 
 
 class SelfBaroque extends React.Component {
+
     constructor() {
         super();
         this.state = {userName: new String("sfdfd")}
     }
 
     componentDidMount() {
-        this.setState({
-            userName: fetchInstaData.getUserInfo(ACCESS_TOKEN)
-        })
-
-        console.log(this.state.userName)
+        fetchInstaData.getUserInfo(ACCESS_TOKEN)
+            .then((response) => {return response.json()})
+            .catch((ex) => {console.log(ex)})
+            .then((json) => {this.setState({
+                userName: json.data.username
+            })})
     }
 
     render() {
-        return (<h1>{this.state.userName.toString()}</h1>)
+        return (<h1>{this.state.userName}</h1>)
     }
 
 }
