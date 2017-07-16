@@ -17,23 +17,69 @@ class SelfBaroque extends React.Component {
 
     constructor() {
         super();
-        this.state = {userName: new String("Loading")}
+        this.state = {
+            full_name:  new String("Loading"),
+            mediaArray: []
+        }
     }
 
     componentDidMount() {
+
         fetchInstaData.getUserInfo(ACCESS_TOKEN)
             .then(response => {return response.json()})
             .catch(ex => {console.log(ex)})
             .then(json => {
                 console.log(json)
                 this.setState({
-                    userName: json.data.username
+                    full_name:  json.data.full_name
                 })
             })
+
+        fetchInstaData.getUserMedia(ACCESS_TOKEN)
+            .then(response => {return response.json()})
+            .catch(ex => {console.log(ex)})
+            .then(json => {
+
+                console.log(json.data)
+
+                var mediaArrayLocal = json.data.map((media) =>
+                    <li key={media.id} className={style.thumbnail_list}>
+                        <div className={style.thumbnail_outer}>
+                            <img className={style.thumbnail}   src={media.images.standard_resolution.url}/>
+                        </div>
+                    </li>
+                )
+
+                this.setState({
+                    mediaArray: mediaArrayLocal
+                })
+
+            })
+
+
+
+        /*var mediaArray = this.state.mediaArrayRaw.map((media) => {
+            <div itemID={media.id}></div>
+        });*/
+
     }
 
     render() {
-        return (<h1 className={style.header}>{this.state.userName}</h1>)
+
+        return (
+            <div id={style.outer}>
+                <div id={style.header}>
+                    <h1>{this.state.full_name}</h1>
+                </div>
+
+                <div id={style.main}>
+                    <ul className={style.wrapper}>
+                        {this.state.mediaArray}
+                    </ul>
+                </div>
+
+            </div>
+        );
     }
 
 }
