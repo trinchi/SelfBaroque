@@ -40,12 +40,16 @@ class SelfBaroque extends React.Component {
             .catch(ex => {console.log(ex)})
             .then(json => {
 
+                json.data.length = 16
+
                 console.log(json.data)
 
                 var mediaArrayLocal = json.data.map((media) =>
                     <li key={media.id} className={style.thumbnail_list}>
                         <div className={style.thumbnail_outer}>
-                            <img className={style.thumbnail}   src={media.images.standard_resolution.url}/>
+                            <a href={media.link} target="_blank">
+                                <img className={style.thumbnail}   src={media.images.standard_resolution.url}/>
+                            </a>
                         </div>
                     </li>
                 )
@@ -55,12 +59,6 @@ class SelfBaroque extends React.Component {
                 })
 
             })
-
-
-
-        /*var mediaArray = this.state.mediaArrayRaw.map((media) => {
-            <div itemID={media.id}></div>
-        });*/
 
     }
 
@@ -80,6 +78,7 @@ class SelfBaroque extends React.Component {
 
             </div>
         );
+
     }
 
 }
