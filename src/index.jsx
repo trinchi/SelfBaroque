@@ -73,7 +73,7 @@ class SelfBaroque extends React.Component {
                 </div>
 
                 <div id={style.main}>
-                    <ul className={style.wrapper}>
+                    <ul className={style.thumbnail_wrapper}>
                         {this.state.mediaArray}
                     </ul>
                 </div>

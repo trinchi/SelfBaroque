@@ -1,32 +1,56 @@
-* {
+h1.header {
+    font-size: 25pt;
+}
+
+/* --Thumbnail Grid-- */
+
+[class*="selfbaroque__thumbnail"] {
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+
+    margin: 0;
+
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-h1.header {
-    font-size: 25pt;
-}
-
-ul.wrapper {
+ul.thumbnail_wrapper, div.thumbnail_outer, img.thumbnail {
     padding: 0;
 }
 
 li.thumbnail_list {
-    list-style: none;
+    flex-basis: 25%;
+    width: 25%;
+    max-width: 25%;
+
     float: left;
+    padding: 2px;
+
+    list-style: none;
 }
 
 div.thumbnail_outer {
-    width: 25vw;
-    max-width: 25vw;
-    height: 25vw;
+    position: relative;
 
-    padding: 2px;
+    width: 100%;
+}
+
+div.thumbnail_outer:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+    height: 0;
 }
 
 img.thumbnail {
+    position: absolute;
+
     width: 100%;
     height: 100%;
+    max-width: 100%;
+
+    -o-object-fit: cover;
     object-fit: cover;
 }
