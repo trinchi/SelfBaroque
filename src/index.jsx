@@ -10,7 +10,7 @@ const ACCESS_TOKEN = '3226651263.145480c.312c86bb039a4fb583a93a2dbfc645dd'
 const REDIRECT_URI = 'https://github.com/Mar0/SelfBaroque'
 
 //https://api.instagram.com/v1/users/self/?access_token=3226651263.145480c.312c86bb039a4fb583a93a2dbfc645dd
-//'http://www.flickr.com/services/feeds/photos_public.gne?format=json'
+//http://www.flickr.com/services/feeds/photos_public.gne?format=json
 
 
 class SelfBaroque extends React.Component {
@@ -65,17 +65,10 @@ class SelfBaroque extends React.Component {
     render() {
 
         return (
-            <div id={style.outer}>
-                <div id={style.header}>
-                    <h1>{this.state.full_name}</h1>
-                </div>
-
-                <div id={style.main}>
-                    <ul className={style.thumbnail_wrapper}>
-                        {this.state.mediaArray}
-                    </ul>
-                </div>
-
+            <div id={style.main}>
+                <ul className={style.thumbnail_wrapper}>
+                    {this.state.mediaArray}
+                </ul>
             </div>
         );
 
