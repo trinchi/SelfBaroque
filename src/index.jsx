@@ -15,8 +15,8 @@ class SelfBaroque extends React.Component {
     constructor() {
         super();
         this.state = {
-            full_name:  new String("Loading"),
-            mediaArray: []
+            full_name: new String(""),
+            mediaGrid: [<div className={style.loader} key="0"></div>]
         }
     }
 
@@ -24,7 +24,6 @@ class SelfBaroque extends React.Component {
 
         fetchInstaData.getUserInfo(ACCESS_TOKEN)
             .then(response => {return response.json()})
-            .catch(ex => {console.log(ex)})
             .then(json => {
                 this.setState({
                     full_name:  json.data.full_name
@@ -36,11 +35,12 @@ class SelfBaroque extends React.Component {
             .catch(ex => {console.log(ex)})
             .then(json => {
 
+                // shorten to show only the 16 most recent pictures
                 json.data.length = 16
 
                 console.log(json.data)
 
-                var mediaArrayLocal = json.data.map((media) =>
+                var mediaGridLocal = json.data.map((media) =>
                     <li key={media.id} className={style.thumbnail_list}>
                         <div className={style.thumbnail_outer}>
                             <a href={media.link} target="_blank">
@@ -51,7 +51,11 @@ class SelfBaroque extends React.Component {
                 )
 
                 this.setState({
-                    mediaArray: mediaArrayLocal
+                    mediaGrid: (
+                        <ul className={style.thumbnail_wrapper}>
+                            {mediaGridLocal}
+                        </ul>
+                    )
                 })
 
             })
@@ -61,10 +65,8 @@ class SelfBaroque extends React.Component {
     render() {
 
         return (
-            <div id={style.main}>
-                <ul className={style.thumbnail_wrapper}>
-                    {this.state.mediaArray}
-                </ul>
+            <div>
+                {this.state.mediaGrid}
             </div>
         );
 
