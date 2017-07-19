@@ -2,7 +2,7 @@
   "name": "selfbaroque",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "start": "webpack-dev-server --inline --hot --content-base dev/",
     "build": "webpack -p",
