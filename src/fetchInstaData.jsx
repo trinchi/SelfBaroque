@@ -1,7 +1,7 @@
 import fetchJsonp from 'fetch-jsonp';
 
 export function callInstaFetch(uri) {
-    return fetchJsonp(uri + '&callback=?', {})
+    return fetchJsonp(uri + '&callback=?', {timeout: 10000})
 }
 
 export function getUserInfo(ACCESS_TOKEN) {

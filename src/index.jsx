@@ -29,22 +29,22 @@ class SelfBaroque extends React.Component {
                     full_name:  json.data.full_name
                 })
             })
+            .catch()
 
         fetchInstaData.getUserMedia(ACCESS_TOKEN)
             .then(response => {return response.json()})
-            .catch(ex => {console.log(ex)})
             .then(json => {
 
                 // shorten to show only the 16 most recent pictures
                 json.data.length = 16
 
-                console.log(json.data)
+                let resolution = config.resolution
 
-                var mediaGridLocal = json.data.map((media) =>
+                let mediaGridLocal = json.data.map((media) =>
                     <li key={media.id} className={style.thumbnail_list}>
                         <div className={style.thumbnail_outer}>
                             <a href={media.link} target="_blank">
-                                <img className={style.thumbnail}   src={media.images.standard_resolution.url}/>
+                                <img className={style.thumbnail}   src={media.images[resolution].url}/>
                             </a>
                         </div>
                     </li>
@@ -59,6 +59,16 @@ class SelfBaroque extends React.Component {
                 })
 
             })
+            .catch(error => {
+                this.setState({
+                    mediaGrid: [
+                        <div className={style.error_outer} key="0">
+                            <h2 className={style.error}>Unable to receive Instagram data</h2>
+                        </div>
+                    ]
+                })
+            })
+
 
     }
 

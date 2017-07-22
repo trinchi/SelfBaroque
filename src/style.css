@@ -19,6 +19,15 @@
     100% { transform: rotate(360deg); }
 }
 
+/* --Error Message */
+.error_outer {
+    text-align: center;
+}
+
+.error {
+    display: inline-block;
+}
+
 /* --Thumbnail Grid-- */
 
 [class*="selfbaroque__thumbnail"] {
