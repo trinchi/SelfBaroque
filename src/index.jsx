@@ -22,53 +22,57 @@ class SelfBaroque extends React.Component {
 
     componentDidMount() {
 
-        fetchInstaData.getUserInfo(ACCESS_TOKEN)
-            .then(response => {return response.json()})
-            .then(json => {
-                this.setState({
-                    full_name:  json.data.full_name
-                })
-            })
-            .catch()
-
-        fetchInstaData.getUserMedia(ACCESS_TOKEN)
+        fetchInstaData.getUserMedia(ACCESS_TOKEN, config.mediaCount)
             .then(response => {return response.json()})
             .then(json => {
 
-                // shorten to show only the 16 most recent pictures
-                json.data.length = 16
+                if( /^4.{2}/.test(json.meta.code) ) {
 
-                let resolution = config.resolution
+                    this.setState({
+                        mediaGrid: [
+                            <div className={style.error_outer} key="0">
+                                <h2 className={style.error}>{json.meta.error_message}</h2><br/>
+                                <h3 className={style.error}>{json.meta.error_type}</h3>
+                            </div>
+                        ]
+                    })
 
-                let mediaGridLocal = json.data.map((media) =>
-                    <li key={media.id} className={style.thumbnail_list}>
-                        <div className={style.thumbnail_outer}>
-                            <a href={media.link} target="_blank">
-                                <img className={style.thumbnail}   src={media.images[resolution].url}/>
-                            </a>
-                        </div>
-                    </li>
-                )
+                }
+                else {
 
-                this.setState({
-                    mediaGrid: (
-                        <ul className={style.thumbnail_wrapper}>
-                            {mediaGridLocal}
-                        </ul>
+                    let resolution = config.resolution
+
+                    let mediaGridLocal = json.data.map((media) =>
+                        <li key={media.id} className={style.thumbnail_list}>
+                            <div className={style.thumbnail_outer}>
+                                <a href={media.link} target="_blank">
+                                    <img className={style.thumbnail} src={media.images[resolution].url}/>
+                                </a>
+                            </div>
+                        </li>
                     )
-                })
+
+                    this.setState({
+                        mediaGrid: (
+                            <ul className={style.thumbnail_wrapper}>
+                                {mediaGridLocal}
+                            </ul>
+                        )
+                    })
+
+                }
 
             })
             .catch(error => {
                 this.setState({
                     mediaGrid: [
                         <div className={style.error_outer} key="0">
-                            <h2 className={style.error}>Unable to receive Instagram data</h2>
+                            <h2 className={style.error}>Timeout</h2><br/>
+                            <h3 className={style.error}>Unable to receive Instagram data</h3>
                         </div>
                     ]
                 })
             })
-
 
     }
 

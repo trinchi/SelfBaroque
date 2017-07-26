@@ -8,8 +8,9 @@ export function getUserInfo(ACCESS_TOKEN) {
     return this.callInstaFetch('https://api.instagram.com/v1/users/self/?access_token=' + ACCESS_TOKEN)
 }
 
-export function getUserMedia(ACCESS_TOKEN) {
-    return this.callInstaFetch('https://api.instagram.com/v1/users/self/media/recent/?access_token=' + ACCESS_TOKEN)
+export function getUserMedia(ACCESS_TOKEN, mediaCount) {
+    return this.callInstaFetch('https://api.instagram.com/v1/users/self/media/recent/?access_token=' + ACCESS_TOKEN
+        + '&count=' + mediaCount)
 }
 
 export function getMediaInfo(ACCESS_TOKEN, mediaId) {
