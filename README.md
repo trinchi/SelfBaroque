@@ -1,5 +1,9 @@
 # SelfBaroque
 
+## Introduction
+
+SelfBaroque is a Javascript ReactJS component that is used to display the most recent images posted on Instagram.
+
 ## Setup
 
 1. Open the following [link](https://www.instagram.com/oauth/authorize/?client_id=145480c63e944a37b50bc0df19b18f52&redirect_uri=https://github.com/Mar0/SelfBaroque&response_type=token) to authorize this Instagram Client to access your profile. You will get redirected to this Github Page again. Don't close this new window yet!
@@ -28,7 +32,7 @@ Insert your received Access Token here.
 
 ### image resolution
 
-Desired image resolution (optionally 'low_resolution' and 'thumbnail' are possible).
+Desired image resolution (optionally `low_resolution` and `thumbnail` are possible).
 
 ### mediaCount
 
