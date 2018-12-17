@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mar0/SelfBaroque.git"
+    "url": "git+https://github.com/trinchi/SelfBaroque.git"
   },
   "author": "David Trinchi",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/Mar0/SelfBaroque/issues"
+    "url": "https://github.com/trinchi/SelfBaroque/issues"
   },
-  "homepage": "https://github.com/Mar0/SelfBaroque#readme",
+  "homepage": "https://github.com/trinchi/SelfBaroque#readme",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",

@@ -5,8 +5,8 @@ import config from './config.json'
 import style from './style.css'
 
 // ClientID 145480c63e944a37b50bc0df19b18f52
-// RedirectURI https://github.com/Mar0/SelfBaroque
-// Authorization URL https://www.instagram.com/oauth/authorize/?client_id=145480c63e944a37b50bc0df19b18f52&redirect_uri=https://github.com/Mar0/SelfBaroque&response_type=token
+// RedirectURI https://github.com/trinchi/SelfBaroque
+// Authorization URL https://www.instagram.com/oauth/authorize/?client_id=145480c63e944a37b50bc0df19b18f52&redirect_uri=https://github.com/trinchi/SelfBaroque&response_type=token
 
 const ACCESS_TOKEN = config.ACCESS_TOKEN
 
